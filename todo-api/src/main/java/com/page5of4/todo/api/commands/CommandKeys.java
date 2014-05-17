@@ -1,7 +1,12 @@
-package com.page5of4.todo.edge;
+package com.page5of4.todo.api.commands;
 
 import com.yammer.tenacity.core.properties.TenacityPropertyKey;
 
 public enum CommandKeys implements TenacityPropertyKey {
-   ALWAYS_SUCCEED
+   ADD_TODO,
+   GET_TODOS,
+   DELETE_TODO,
+
+   GET_TODO,
+   GET_ARCHIVED_TODOS
 }

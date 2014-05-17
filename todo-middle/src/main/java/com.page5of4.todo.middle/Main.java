@@ -2,6 +2,8 @@ package com.page5of4.todo.middle;
 
 import com.codahale.metrics.JmxReporter;
 import com.page5of4.dropwizard.EurekaClientBundle;
+import com.page5of4.todo.api.commands.CommandKeyFactory;
+import com.page5of4.todo.api.commands.CommandKeys;
 import com.yammer.tenacity.core.bundle.TenacityBundleBuilder;
 import dagger.ObjectGraph;
 import io.dropwizard.Application;

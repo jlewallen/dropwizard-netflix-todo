@@ -2,6 +2,8 @@ package com.page5of4.todo.edge;
 
 import com.codahale.metrics.JmxReporter;
 import com.page5of4.dropwizard.EurekaClientBundle;
+import com.page5of4.todo.api.commands.CommandKeyFactory;
+import com.page5of4.todo.api.commands.CommandKeys;
 import com.yammer.tenacity.core.bundle.TenacityBundleBuilder;
 import dagger.ObjectGraph;
 import io.dropwizard.Application;
@@ -11,7 +13,7 @@ import io.dropwizard.setup.Environment;
 
 public class Main extends Application<EdgeConfiguration> {
    public static void main(String[] args) throws Exception {
-      new Main().run(new String[] { "server", System.getProperty("dropwizard.config") });
+      new Main().run(new String[] { "server", System.getProperty("dropwizard.config") == null ? "src/main/resources/todo-edge.yml" : System.getProperty("dropwizard.config") });
    }
 
    @Override

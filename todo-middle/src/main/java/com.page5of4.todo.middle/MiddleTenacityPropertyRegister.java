@@ -16,8 +16,6 @@ public class MiddleTenacityPropertyRegister {
    public void register() {
       final ImmutableMap.Builder<TenacityPropertyKey, TenacityConfiguration> builder = ImmutableMap.builder();
 
-      builder.put(CommandKeys.ALWAYS_SUCCEED, configuration.getTenacity());
-
       BreakerboxConfiguration breakerboxConfiguration = new BreakerboxConfiguration();
 
       new TenacityPropertyRegister(builder.build(), breakerboxConfiguration).register();

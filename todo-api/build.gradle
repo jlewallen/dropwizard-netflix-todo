@@ -4,9 +4,19 @@ apply plugin: 'application'
 sourceCompatibility = '1.8'
 
 dependencies {
+    compile "com.netflix.ribbon:ribbon-core:0.2.1"
+    compile "com.netflix.ribbon:ribbon-httpclient:0.2.1"
+    compile "com.netflix.ribbon:ribbon-eureka:0.2.1"
+
     compile 'com.netflix.feign:feign-core:6.1.2'
     compile 'com.netflix.feign:feign-jaxrs:6.1.2'
     compile 'com.netflix.feign:feign-jackson:6.1.2'
+    compile "com.netflix.feign:feign-ribbon:4.1.0"
+    compile "com.netflix.feign:feign-gson:4.1.0"
+
+    compile "com.netflix.archaius:archaius-core:0.5.11"
+
+    compile 'com.yammer.tenacity:tenacity-core:0.3.0'
 
     testCompile 'junit:junit:4.11'
 }
@@ -16,6 +26,7 @@ task capsule(type: Jar, dependsOn: classes) {
 
     from jar
     from { configurations.runtime }
+    from { sourceSets.main.resources }
 
     manifest {
         attributes(

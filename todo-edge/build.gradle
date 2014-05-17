@@ -30,6 +30,8 @@ dependencies {
 
     compile 'com.page5of4.dropwizard:dropwizard-karyon:0.1.0'
 
+    compile 'com.page5of4.todo:todo-api:0.1.0'
+
     testCompile 'junit:junit:4.11'
 }
 
@@ -38,8 +40,11 @@ task capsule(type: Jar, dependsOn: classes) {
 
     from jar
     from { configurations.runtime }
+    from { sourceSets.main.resources }
 
-    from(configurations.capsule.collect { zipTree(it) }) { include 'Capsule.class' }
+    from(configurations.capsule.collect { zipTree(it) }) {
+        include 'Capsule.class'
+    }
 
     manifest {
         attributes(

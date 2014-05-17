@@ -15,6 +15,6 @@ public class TodoMiddleResource {
 
    @GET
    public String success() {
-      return new AlwaysSucceed().execute();
+      return "success";
    }
 }

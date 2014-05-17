@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.yammer.tenacity.core.config.BreakerboxConfiguration;
 import com.yammer.tenacity.core.config.TenacityConfiguration;
 import com.yammer.tenacity.core.properties.TenacityPropertyKey;
+import com.yammer.tenacity.core.properties.TenacityPropertyRegister;
 
 public class EdgeTenacityPropertyRegister {
    private final EdgeConfiguration configuration;
@@ -17,6 +18,6 @@ public class EdgeTenacityPropertyRegister {
 
       BreakerboxConfiguration breakerboxConfiguration = new BreakerboxConfiguration();
 
-      new com.yammer.tenacity.core.properties.TenacityPropertyRegister(builder.build(), breakerboxConfiguration).register();
+      new TenacityPropertyRegister(builder.build(), breakerboxConfiguration).register();
    }
 }

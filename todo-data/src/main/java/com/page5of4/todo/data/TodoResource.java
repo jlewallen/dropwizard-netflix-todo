@@ -3,6 +3,7 @@ package com.page5of4.todo.data;
 import com.codahale.metrics.annotation.Timed;
 
 import javax.inject.Inject;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -35,8 +36,21 @@ public class TodoResource {
    }
 
    @Timed
-   @GET @Path("/{id}")
+   @GET
+   @Path("/{id}")
    public Todo find(@PathParam("id") Long id) {
       return repository.findById(id);
+   }
+
+   @Timed
+   @DELETE
+   @Path("/{id}")
+   public Todo delete(@PathParam("id") Long id) {
+      Todo todo = repository.findById(id);
+      if(todo != null) {
+         repository.deleteById(id);
+         // Raise Deleted
+      }
+      return todo;
    }
 }
