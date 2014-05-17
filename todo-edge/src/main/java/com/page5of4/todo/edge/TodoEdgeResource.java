@@ -41,7 +41,6 @@ public class TodoEdgeResource {
    }
 
    @POST
-   @Path("/")
    public TodoViewModel add(TodoViewModel todoViewModel) {
       return new AddTodo(todoViewModel).execute();
    }
