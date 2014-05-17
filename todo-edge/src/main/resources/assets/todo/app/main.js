@@ -1,5 +1,5 @@
 require.config({
-	baseUrl : "./todo",
+	baseUrl : "/assets/todo",
 	paths : {
 		'text' : 'lib/text',
 		"moment" : "lib/moment"

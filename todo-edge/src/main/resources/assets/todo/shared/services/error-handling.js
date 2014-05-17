@@ -1,6 +1,6 @@
 ﻿'use strict';
 define(['lib/angular/angular', 'lib/lodash', 'text!./error-dialog.html'], function(angular, _, template) {
-	var module = angular.module('nc.errors', []);
+	var module = angular.module('todo.errors', []);
 
 	function isStackTraceInteresting(line) {
 		return !/^(NHibernate|System|Remotion|Castle)/.test(line);

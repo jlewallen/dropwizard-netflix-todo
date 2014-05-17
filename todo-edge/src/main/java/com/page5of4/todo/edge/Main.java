@@ -19,7 +19,7 @@ public class Main extends Application<EdgeConfiguration> {
    @Override
    public void initialize(Bootstrap<EdgeConfiguration> bootstrap) {
       bootstrap.addBundle(new EurekaClientBundle());
-      bootstrap.addBundle(new AssetsBundle("/assets/", "/"));
+      bootstrap.addBundle(new AssetsBundle("/assets/", "/assets/", "index.html"));
       bootstrap.addBundle(TenacityBundleBuilder
          .newBuilder()
          .propertyKeyFactory(new CommandKeyFactory())

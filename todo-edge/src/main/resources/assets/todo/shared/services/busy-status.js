@@ -1,6 +1,6 @@
 ﻿'use strict';
 define(['lib/angular/angular', "text!./busy-dialog.html"], function(angular, template) {
-	var module = angular.module('nc.busy', []);
+	var module = angular.module('todo.busy', []);
 
 	module.directive("ncVisibleIfBusy", function() {
 		return {

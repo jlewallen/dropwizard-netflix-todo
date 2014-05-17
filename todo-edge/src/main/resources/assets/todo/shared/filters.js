@@ -1,6 +1,6 @@
 ﻿'use strict';
 define(['lib/angular/angular', 'lib/lodash'], function(angular, _) {
-	var module = angular.module('nc.filters', []);
+	var module = angular.module('todo.filters', []);
 
 	module.filter('joinBy', function() {
 		return function(input, delimiter) {
@@ -15,14 +15,6 @@ define(['lib/angular/angular', 'lib/lodash'], function(angular, _) {
 				return input.slice(start);
 			}
 			return input;
-		};
-	});
-
-	module.filter('money', function() {
-		return function(input) {
-			if (input !== undefined && input != null) {
-				return "$" + input.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-			}
 		};
 	});
 
