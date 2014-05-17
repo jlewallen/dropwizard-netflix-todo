@@ -1,0 +1,19 @@
+﻿<div class="modal-header alert alert-danger">
+	<button type="button" class="close" data-dismiss="modal" ng-click="cancel()" aria-hidden="true">×</button>
+	<h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body error-details">
+	<div ng-repeat="error in errors">
+		<div ng-show="error.exceptionMessage">
+			<b class="message" ng-click="error.expanded = !error.expanded">{{error.exceptionMessage}} ({{error.exceptionType}})</b>
+			<ul ng-show="error.stackTrace && error.expanded" class="stacktrace">
+				<li ng-repeat="line in error.stackTrace track by $index">
+					<span ng-class="{ interesting: line.interesting }">{{line.line}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-primary" ng-click="done()">Ok</button>
+</div>

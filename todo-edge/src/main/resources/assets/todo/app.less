@@ -1,0 +1,288 @@
+@import "lib/bootstrap/less/bootstrap.less";
+
+body {
+  margin-top: 50px;
+}
+
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow: scroll;
+}
+
+form.ef-submitted {
+  select.ng-invalid, input.ng-invalid {
+    background-color: #f2dede;
+  }
+}
+
+form {
+  select.ng-invalid.ng-dirty, input.ng-invalid.ng-dirty {
+    background-color: #f2dede;
+  }
+}
+
+.error-dialog {
+  .modal-dialog {
+    width: 100%;
+  }
+}
+
+.error-details {
+  .message {
+    cursor: pointer;
+  }
+  .stacktrace {
+    font-size: 10px;
+  }
+  ul.stacktrace {
+    list-style-type: none;
+    padding-left: 0px;
+
+    li {
+    }
+
+    .interesting {
+      font-weight: bold;
+      font-size: 11px;
+    }
+  }
+}
+
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.modal.full-screen {
+  overflow-y: hidden;
+
+  .modal-dialog {
+    width: 100%;
+    margin-left: 10;
+    margin-right: 10;
+    height: 100%;
+    padding: 0;
+  }
+
+  .modal-content {
+    height: 95%;
+    border-radius: 0;
+    opacity: 1.0;
+  }
+}
+
+body.modal-open {
+  margin-right: 0px;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  margin-top: 50px;
+}
+
+ul.events {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 20px 0;
+}
+
+ul.events li {
+  -webkit-border-radius: 11px;
+  -moz-border-radius: 11px;
+  border-radius: 11px;
+  background: #eee;
+  border: 1px solid #ddd;
+  color: #707070;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 6px;
+  padding: 3px 0;
+  position: relative;
+  text-align: center;
+}
+
+ul.events li em {
+  color: #aaa;
+  font-weight: normal;
+  font-size: 0.9em;
+}
+
+ul.intervals {
+  list-style-type: none;
+  padding: 0;
+  display: block;
+}
+
+/* The width depends on the number of intervals. For example 100 / 7 = 14.29% -- then subtract a little bit for room for the borders */
+ul.intervals li {
+  background: #fff url(/images/1x1_eee.gif) repeat-x left 10%;
+  border-right: 1px solid #ccc;
+  color: #999;
+  float: left;
+  font-size: 1.2em;
+  margin: 0;
+  padding: 15px 0;
+  text-align: center;
+  width: 14.17%;
+}
+
+ul.intervals li.first {
+  border-left: 1px solid #ccc;
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* Custom container */
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.container-narrow>hr {
+  margin: 30px 0;
+}
+
+th.cell-right, td.cell-right {
+  text-align: right;
+}
+
+tr.future-change {
+  color: #a0a0a0;
+}
+
+tr.last-change {
+  color: #C38EC7;
+}
+
+td.changes {
+  font-size: 11px;
+}
+
+.meter {
+  height: 20px; /* Can be anything */
+  width: 100%;
+  position: relative;
+  background: #DDDDDD;
+  display: inline-block;
+  font-size: 10px;
+}
+
+.meter > span {
+  display: block;
+  height: 100%;
+  background-color: #7cd689;
+  position: relative;
+  overflow: hidden;
+}
+
+.has-percentage-bar {
+  font-size: 10px;
+}
+
+.has-percentage-bar > .meter {
+  float: right;
+  width: 80px;
+}
+
+.allocation SELECT, .allocation INPUT {
+  font-size: 95%;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+INPUT.ng-invalid {
+  border-color: #b94a48;
+}
+
+td .cell-float-right {
+  display: inline-block;
+  float: right;
+}
+
+.day {
+  width: 14.2857%;
+  float: left;
+  height: 125px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.day .date {
+}
+
+.day.header {
+  font-weight: bold;
+  height: 25px;
+}
+
+.day.different {
+  background-color: #efefef;
+}
+
+.day.today {
+  background-color: #ffffaa;
+}
+
+.day.changes {
+  background-color: #a6b779;
+}
+
+.day:hover {
+  background-color: #a0a0d0;
+}
+
+.day .body {
+  font-size: 10px;
+  overflow: hidden;
+}
+
+.day .body .allocation-change {
+  font-size: 16px;
+}
+
+.modal.full-screen {
+  overflow-y: hidden;
+}
+
+.modal.full-screen .modal-dialog {
+  width: 100%;
+  margin-left: 10;
+  margin-right: 10;
+  height: 100%;
+  padding: 0;
+}
+
+.modal.full-screen .modal-content {
+  height: 95%;
+  border-radius: 0;
+  opacity: 1.0;
+}
+
+body.modal-open {
+  margin-right: 0px;
+}
+
+.modal.large {
+  margin-top: 15%;
+  overflow-y: hidden;
+}
+
+.modal.large .modal-dialog {
+  width: 50%;
+  margin-left: 10;
+  margin-right: 10;
+  padding: 0;
+}
+
+.focused {
+  font-weight: bold;
+}
+
