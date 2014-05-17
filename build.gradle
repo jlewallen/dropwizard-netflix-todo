@@ -1,0 +1,11 @@
+subprojects {
+    apply plugin: 'maven'
+
+    group = 'com.page5of4.todo'
+    version = '0.1.0'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}

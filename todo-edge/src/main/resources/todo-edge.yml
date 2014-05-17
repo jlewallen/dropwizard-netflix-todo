@@ -1,0 +1,12 @@
+server:
+    applicationConnectors:
+    - type: http
+      port: 9010
+    adminConnectors:
+    - type: http
+      port: 9011
+eureka:
+    name: TODO
+    port: 9000
+    vipAddress: todo-edge.page5of4.com
+    defaultServiceUrl: http://127.0.0.1:90/eureka/v2/

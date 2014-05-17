@@ -1,0 +1,54 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = '1.8'
+
+mainClassName = 'com.page5of4.todo.middle.Main'
+
+configurations {
+    capsule
+}
+
+run {
+    systemProperty "dropwizard.config", "build/resources/main/todo-middle.yml"
+}
+
+dependencies {
+    compile 'io.dropwizard:dropwizard-core:0.7.0'
+
+    compile 'com.squareup.dagger:dagger:1.2.1'
+    compile 'com.squareup.dagger:dagger-compiler:1.2.1'
+
+    compile 'com.netflix.feign:feign-core:6.1.2'
+    compile 'com.netflix.feign:feign-jaxrs:6.1.2'
+    compile 'com.netflix.feign:feign-jackson:6.1.2'
+
+    capsule 'co.paralleluniverse:capsule:0.4.0'
+
+    compile 'com.yammer.tenacity:tenacity-core:0.3.0'
+
+    compile 'com.page5of4.dropwizard:dropwizard-karyon:0.1.0'
+
+    testCompile 'junit:junit:4.11'
+}
+
+task capsule(type: Jar, dependsOn: classes) {
+    archiveName = "todo-middle.jar"
+
+    from jar
+    from { configurations.runtime }
+
+    from(configurations.capsule.collect { zipTree(it) }) { include 'Capsule.class' }
+
+    manifest {
+        attributes(
+                'Main-Class': 'Capsule',
+                'Application-Class': mainClassName,
+                'Application-Version': version,
+                'Min-Java-Version': '1.8.0',
+                'JVM-Args': run.jvmArgs.join(' '),
+                'System-Properties': run.systemProperties.collect { k, v -> "$k=$v" }.join(' '),
+        )
+    }
+}
+

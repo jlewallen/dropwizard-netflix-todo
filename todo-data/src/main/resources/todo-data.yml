@@ -1,0 +1,17 @@
+server:
+    applicationConnectors:
+    - type: http
+      port: 9000
+    adminConnectors:
+    - type: http
+      port: 9001
+database:
+    driverClass: org.h2.Driver
+    user: sa
+    password: sa
+    url: jdbc:h2:mem:todo
+eureka:
+    name: TODO
+    port: 9000
+    vipAddress: todo-data.page5of4.com
+    defaultServiceUrl: http://127.0.0.1:90/eureka/v2/

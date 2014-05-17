@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = '1.8'
+
+dependencies {
+    compile 'com.netflix.feign:feign-core:6.1.2'
+    compile 'com.netflix.feign:feign-jaxrs:6.1.2'
+    compile 'com.netflix.feign:feign-jackson:6.1.2'
+
+    testCompile 'junit:junit:4.11'
+}
+
+task capsule(type: Jar, dependsOn: classes) {
+    archiveName = "todo-api.jar"
+
+    from jar
+    from { configurations.runtime }
+
+    manifest {
+        attributes(
+                'Application-Version': version,
+                'Min-Java-Version': '1.8.0',
+                'JVM-Args': run.jvmArgs.join(' '),
+                'System-Properties': run.systemProperties.collect { k, v -> "$k=$v" }.join(' '),
+        )
+    }
+}
+
