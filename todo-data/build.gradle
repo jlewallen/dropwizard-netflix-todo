@@ -40,7 +40,7 @@ dependencies {
 
     compile 'com.yammer.tenacity:tenacity-core:0.3.0'
 
-    compile 'com.page5of4.dropwizard:dropwizard-karyon:0.1.0'
+    compile 'com.page5of4.dropwizard:dropwizard-karyon:0.1.0-SNAPSHOT'
 
     testCompile 'junit:junit:4.11'
 }

@@ -27,9 +27,9 @@ dependencies {
 
     compile 'com.yammer.tenacity:tenacity-core:0.3.0'
 
-    compile 'com.page5of4.dropwizard:dropwizard-karyon:0.1.0'
+    compile 'com.page5of4.dropwizard:dropwizard-karyon:0.1.0-SNAPSHOT'
 
-    compile 'com.page5of4.todo:todo-api:0.1.0'
+    compile project(':todo-api')
 
     testCompile 'junit:junit:4.11'
 }
