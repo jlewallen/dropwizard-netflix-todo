@@ -1,0 +1,49 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = '1.8'
+
+mainClassName = 'com.page5of4.todo.infrastructure.Main'
+
+configurations {
+    capsule
+}
+
+run {
+    systemProperty "dropwizard.config", "build/resources/main/todo-infrastructure.yml"
+}
+
+dependencies {
+    compile 'io.dropwizard:dropwizard-core:0.7.0'
+
+    compile 'com.page5of4.dropwizard:dropwizard-eureka-server:0.1.0-SNAPSHOT'
+    compile 'com.page5of4.dropwizard:dropwizard-zookeeper:0.1.0-SNAPSHOT'
+
+    capsule 'co.paralleluniverse:capsule:0.4.0'
+
+    testCompile 'junit:junit:4.11'
+}
+
+task capsule(type: Jar, dependsOn: classes) {
+    archiveName = "todo-infrastructure.jar"
+
+    from jar
+    from { configurations.runtime }
+    from { sourceSets.main.resources }
+
+    from(configurations.capsule.collect { zipTree(it) }) {
+        include 'Capsule.class'
+    }
+
+    manifest {
+        attributes(
+                'Main-Class': 'Capsule',
+                'Application-Class': mainClassName,
+                'Application-Version': version,
+                'Min-Java-Version': '1.8.0',
+                'JVM-Args': run.jvmArgs.join(' '),
+                'System-Properties': run.systemProperties.collect { k, v -> "$k=$v" }.join(' '),
+        )
+    }
+}
+

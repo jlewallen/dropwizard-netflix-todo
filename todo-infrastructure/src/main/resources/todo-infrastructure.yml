@@ -1,0 +1,17 @@
+server:
+    type: simple
+    applicationContextPath: /eureka
+    adminContextPath: /admin
+    connector:
+        type: http
+        port: 90
+
+eurekaServer:
+    defaultServiceUrl: http://127.0.0.1:90/eureka/v2/
+
+zookeeper:
+    server: true
+
+logging:
+  loggers:
+    org.apache.zookeeper.ZooKeeper: WARN
