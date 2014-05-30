@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'jetty'
 
 sourceCompatibility = '1.8'
 
@@ -7,6 +8,7 @@ mainClassName = 'com.page5of4.todo.infrastructure.Main'
 
 configurations {
     capsule
+    dashboard
 }
 
 run {
@@ -14,6 +16,8 @@ run {
 }
 
 dependencies {
+    dashboard  'com.netflix.hystrix:hystrix-dashboard:1.4.0-RC4'
+
     compile 'io.dropwizard:dropwizard-core:0.7.0'
 
     compile 'com.page5of4.dropwizard:dropwizard-eureka-server:0.1.0-SNAPSHOT'
@@ -22,6 +26,12 @@ dependencies {
     capsule 'co.paralleluniverse:capsule:0.4.0'
 
     testCompile 'junit:junit:4.11'
+}
+
+task dashboard(type: JettyRunWar) {
+    webApp = configurations.dashboard.find { it.name.contains("hystrix-dashboard") }
+    httpPort = 7676
+    contextPath = "hystrix"
 }
 
 task capsule(type: Jar, dependsOn: classes) {
