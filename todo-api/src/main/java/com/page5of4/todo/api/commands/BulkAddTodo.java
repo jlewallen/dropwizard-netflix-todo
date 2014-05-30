@@ -9,7 +9,7 @@ public class BulkAddTodo extends TenacityCommand<Integer> {
    private Integer number;
 
    public BulkAddTodo(Integer number) {
-      super(CommandKeys.ADD_TODO);
+      super(CommandKeys.BULK_ADD_TODOS);
       this.number = number;
    }
 

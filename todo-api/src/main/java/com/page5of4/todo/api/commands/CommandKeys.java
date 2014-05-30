@@ -6,7 +6,6 @@ public enum CommandKeys implements TenacityPropertyKey {
    ADD_TODO,
    GET_TODOS,
    DELETE_TODO,
-
    GET_TODO,
-   GET_ARCHIVED_TODOS
+   BULK_ADD_TODOS
 }
