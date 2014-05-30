@@ -37,7 +37,6 @@ dependencies {
 
     testCompile 'junit:junit:4.11'
 }
-
 task capsule(type: Jar, dependsOn: classes) {
     archiveName = "todo-edge.jar"
 
@@ -60,4 +59,3 @@ task capsule(type: Jar, dependsOn: classes) {
         )
     }
 }
-
