@@ -2,6 +2,7 @@ package com.page5of4.todo.edge;
 
 import com.page5of4.todo.api.TodoViewModel;
 import com.page5of4.todo.api.commands.AddTodo;
+import com.page5of4.todo.api.commands.BulkAddTodo;
 import com.page5of4.todo.api.commands.DeleteTodo;
 import com.page5of4.todo.api.commands.GetTodo;
 import com.page5of4.todo.api.commands.GetTodos;
@@ -43,5 +44,12 @@ public class TodoEdgeResource {
    @POST
    public TodoViewModel add(TodoViewModel todoViewModel) {
       return new AddTodo(todoViewModel).execute();
+   }
+
+   @POST
+   @Path("/bulk-add/{number}")
+   public Integer bulkAdd(@PathParam("number") Integer number) {
+      new BulkAddTodo(number).execute();
+      return number;
    }
 }

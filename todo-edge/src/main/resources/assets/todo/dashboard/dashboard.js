@@ -1,37 +1,63 @@
 'use strict';
-define(['text!./dashboard.html', 'layout/default-layout'], function(template, layout) {
+define(['text!./dashboard.html', 'layout/default-layout', 'app/angular-module'], function(template, layout, module) {
 
-	dashboardController.$inject = ['$scope', '$state', '$http'];
-
-	function dashboardController($scope, $state, $http) {
-		$scope.model = {};
-
-		$scope.busy = false;
-		$scope.allocated = null;
-
-		$scope.rebalanceMissing = function() {
-			return $scope.rebalance("allocations/rebalance/missing");
-		};
-
-		$scope.rebalanceAll = function() {
-			return $scope.rebalance("allocations/rebalance/all");
-		};
-
-		$scope.rebalance = function(url) {
-			$scope.busy = true;
-			$http({
-				method : 'POST',
-				url : url,
-				data : $.param({
-					_format : 'json'
-				}),
-				headers : {
-					'Content-Type' : 'application/x-www-form-urlencoded'
-				}
-			}).success(function(model) {
-					$scope.busy = false;
-					$scope.allocated = model;
+	module.service("todos", ['$http', '$q', function($http, $q) {
+		return {
+			getAll : function() {
+				var defer = $q.defer();
+				$http({
+					method : 'GET',
+					url : '/todos'
+				}).success(function(response) {
+					defer.resolve(response);
 				});
+				return defer.promise;
+			},
+			bulkAdd : function(number) {
+				var defer = $q.defer();
+				$http({
+					method : 'POST',
+					url : '/todos/bulk-add/' + number
+				}).success(function(response) {
+					defer.resolve(response);
+				});
+				return defer.promise;
+			},
+			add : function(todo) {
+				var defer = $q.defer();
+				$http({
+					method : 'POST',
+					url : '/todos',
+					data : todo
+				}).success(function(response) {
+					defer.resolve(response);
+				});
+				return defer.promise;
+			}
+		}
+	}]);
+
+	dashboardController.$inject = ['$scope', '$state', 'todos'];
+
+	function dashboardController($scope, $state, todos) {
+		$scope.todos = [];
+		$scope.newTodo = {};
+		$scope.bulkAddNumber = 100;
+
+		function refresh() {
+			todos.getAll().then(function(todos) {
+				$scope.todos = todos;
+			});
+		}
+
+		refresh();
+
+		$scope.bulkAddTodo = function() {
+			todos.bulkAdd($scope.bulkAddNumber).then(refresh);
+		};
+
+		$scope.addTodo = function() {
+			todos.add($scope.newTodo).then(refresh);
 		};
 	}
 

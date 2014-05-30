@@ -1,3 +1,27 @@
 <div class="ng-cloak">
-    <h1>Dashboard</h1>
+    <h1>Todos</h1>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div ng-repeat="todo in todos">
+                {{todo.name}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <form ng-submit="addTodo()">
+                <input type="text" ng-model="newTodo.name" class="form-control"/>
+                <button class="btn btn-primary">Create</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <input type="number" ng-model="bulkAddNumber" class="form-control"/>
+            <button class="btn btn-primary" ng-click="bulkAddTodo()">Bulk Add</button>
+        </div>
+    </div>
 </div>

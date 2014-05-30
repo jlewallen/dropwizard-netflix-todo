@@ -1,6 +1,7 @@
 package com.page5of4.todo.api.commands;
 
 import com.page5of4.todo.api.TodoViewModel;
+import com.page5of4.todo.api.internal.RequestFactory;
 import com.yammer.tenacity.core.TenacityCommand;
 
 import java.util.List;
@@ -12,6 +13,6 @@ public class GetTodos extends TenacityCommand<List<TodoViewModel>> {
 
    @Override
    protected List<TodoViewModel> run() throws Exception {
-      return null;
+      return RequestFactory.data().getTodos();
    }
 }

@@ -14,6 +14,6 @@ public class GetTodo extends TenacityCommand<TodoViewModel> {
 
    @Override
    protected TodoViewModel run() throws Exception {
-      return RequestFactory.middle().getTodo(id);
+      return RequestFactory.data().getTodo(id);
    }
 }

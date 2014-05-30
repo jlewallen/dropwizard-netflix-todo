@@ -1,20 +1,31 @@
 package com.page5of4.todo.api.internal;
 
 import com.page5of4.todo.api.TodoViewModel;
-import feign.Headers;
-import feign.RequestLine;
 
 import javax.inject.Named;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 public interface TodoDataRequests {
-   @RequestLine("GET /todos")
+   @GET
+   @Path("/todos")
    public List<TodoViewModel> getTodos();
 
-   @RequestLine("POST /todos")
-   @Headers("Content-type: application/json")
-   public String addTodo(TodoViewModel todo);
+   @POST
+   @Path("/todos")
+   @Consumes(MediaType.APPLICATION_JSON)
+   public TodoViewModel addTodo(TodoViewModel todo);
 
-   @RequestLine("DELETE /todos/{id}")
+   @DELETE
+   @Path("/todos/{id}")
    public TodoViewModel deleteTodo(@Named("id") Integer id);
+
+   @GET
+   @Path("/todos/{id}")
+   public TodoViewModel getTodo(@Named("id") Integer id);
 }

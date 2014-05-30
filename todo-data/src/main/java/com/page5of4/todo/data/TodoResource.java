@@ -31,8 +31,8 @@ public class TodoResource {
    @Timed
    @POST
    @Path("/")
-   public Todo add(String name) {
-      return find(repository.add(name));
+   public Todo add(Todo newTodo) {
+      return find(repository.add(newTodo.getName()));
    }
 
    @Timed
@@ -49,7 +49,6 @@ public class TodoResource {
       Todo todo = repository.findById(id);
       if(todo != null) {
          repository.deleteById(id);
-         // Raise Deleted
       }
       return todo;
    }
