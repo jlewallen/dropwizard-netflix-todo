@@ -3,14 +3,6 @@
 
     <div class="row">
         <div class="col-sm-4">
-            <div ng-repeat="todo in todos">
-                {{todo.name}}
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-4">
             <form ng-submit="addTodo()">
                 <input type="text" ng-model="newTodo.name" class="form-control"/>
                 <button class="btn btn-primary">Create</button>
@@ -21,7 +13,23 @@
     <div class="row">
         <div class="col-sm-4">
             <input type="number" ng-model="bulkAddNumber" class="form-control"/>
+            <input type="number" ng-model="bulkAddFailurePercent" class="form-control"/>
             <button class="btn btn-primary" ng-click="bulkAddTodo()">Bulk Add</button>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-4">
+            <button class="btn btn-primary" ng-click="purge()">Purge</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div ng-repeat="todo in todos">
+                {{todo.name}}
+            </div>
         </div>
     </div>
 </div>

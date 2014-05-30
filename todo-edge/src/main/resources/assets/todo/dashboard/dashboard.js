@@ -13,11 +13,21 @@ define(['text!./dashboard.html', 'layout/default-layout', 'app/angular-module'],
 				});
 				return defer.promise;
 			},
-			bulkAdd : function(number) {
+			deleteAll : function(number, failurePercent) {
+				var defer = $q.defer();
+				$http({
+					method : 'DELETE',
+					url : '/todos'
+				}).success(function(response) {
+					defer.resolve(response);
+				});
+				return defer.promise;
+			},
+			bulkAdd : function(number, failurePercent) {
 				var defer = $q.defer();
 				$http({
 					method : 'POST',
-					url : '/todos/bulk-add/' + number
+					url : '/todos/bulk-add/' + number + "/" + failurePercent
 				}).success(function(response) {
 					defer.resolve(response);
 				});
@@ -43,6 +53,7 @@ define(['text!./dashboard.html', 'layout/default-layout', 'app/angular-module'],
 		$scope.todos = [];
 		$scope.newTodo = {};
 		$scope.bulkAddNumber = 100;
+		$scope.bulkAddFailurePercent = 10;
 
 		function refresh() {
 			todos.getAll().then(function(todos) {
@@ -53,7 +64,11 @@ define(['text!./dashboard.html', 'layout/default-layout', 'app/angular-module'],
 		refresh();
 
 		$scope.bulkAddTodo = function() {
-			todos.bulkAdd($scope.bulkAddNumber).then(refresh);
+			todos.bulkAdd($scope.bulkAddNumber, $scope.bulkAddFailurePercent).then(refresh);
+		};
+
+		$scope.purge = function() {
+			todos.deleteAll().then(refresh);
 		};
 
 		$scope.addTodo = function() {

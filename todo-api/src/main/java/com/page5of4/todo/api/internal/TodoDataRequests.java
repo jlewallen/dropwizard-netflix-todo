@@ -22,6 +22,10 @@ public interface TodoDataRequests {
    public TodoViewModel addTodo(TodoViewModel todo);
 
    @DELETE
+   @Path("/todos")
+   public Integer deleteAllTodos();
+
+   @DELETE
    @Path("/todos/{id}")
    public TodoViewModel deleteTodo(@Named("id") Integer id);
 

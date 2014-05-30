@@ -10,3 +10,6 @@ eureka:
     port: 9000
     vipAddress: todo-edge.page5of4.com
     defaultServiceUrl: http://127.0.0.1:90/eureka/v2/
+tenacity:
+    threadpool:
+        threadPoolCoreSize: 100

@@ -3,6 +3,7 @@ package com.page5of4.todo.edge;
 import com.page5of4.todo.api.TodoViewModel;
 import com.page5of4.todo.api.commands.AddTodo;
 import com.page5of4.todo.api.commands.BulkAddTodo;
+import com.page5of4.todo.api.commands.DeleteAllTodos;
 import com.page5of4.todo.api.commands.DeleteTodo;
 import com.page5of4.todo.api.commands.GetTodo;
 import com.page5of4.todo.api.commands.GetTodos;
@@ -40,16 +41,21 @@ public class TodoEdgeResource {
    public TodoViewModel delete(@PathParam("id") Integer id) {
       return new DeleteTodo(id).execute();
    }
-
-   @POST
-   public TodoViewModel add(TodoViewModel todoViewModel) {
-      return new AddTodo(todoViewModel).execute();
+   @DELETE
+   @Path("/")
+   public Integer deleteAllTodos() {
+      return new DeleteAllTodos().execute();
    }
 
    @POST
-   @Path("/bulk-add/{number}")
-   public Integer bulkAdd(@PathParam("number") Integer number) {
-      new BulkAddTodo(number).execute();
+   public TodoViewModel add(TodoViewModel todoViewModel) {
+      return new AddTodo(todoViewModel, false).execute();
+   }
+
+   @POST
+   @Path("/bulk-add/{number}/{failurePercent}")
+   public Integer bulkAdd(@PathParam("number") Integer number, @PathParam("failurePercent") Integer failurePercent) {
+      new BulkAddTodo(number, failurePercent).execute();
       return number;
    }
 }

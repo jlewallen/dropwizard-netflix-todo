@@ -12,24 +12,6 @@ define(['lib/angular/angular', 'lib/lodash', 'text!./error-dialog.html'], functi
 		$scope.title = title;
 		$scope.error = response.data;
 		$scope.errors = [];
-		var error = $scope.error;
-		/*
-		while (_.isObject(error) && _.isString(error.message)) {
-			$scope.errors.push(_.extend(error, {
-				expanded : false,
-				stackTrace : _.chain(error.stackTrace.split("\n")).map(function(line) {
-					return line.replace(/\s+at\s+/, '');
-				}).map(function(line) {
-						return {
-							interesting : isStackTraceInteresting(line),
-							line : line
-						};
-					}).value()
-			}));
-			error = error.innerException;
-		}
-		$scope.errors[$scope.errors.length - 1].expanded = true;
-		 */
 
 		$scope.done = function() {
 			callback.reject(response);

@@ -17,9 +17,15 @@ public interface TodoRepository {
    @SqlQuery("SELECT * FROM TODO WHERE id = :id")
    Todo findById(@Bind("id") long id);
 
+   @SqlUpdate("DELETE FROM TODO")
+   void deleteAllTodos();
+
    @SqlUpdate("DELETE FROM TODO WHERE id = :id")
    void deleteById(@Bind("id") long id);
 
    @SqlQuery("SELECT * FROM todo")
    List<Todo> all();
+
+   @SqlQuery("SELECT COUNT(*) FROM todo")
+   Integer numberOfTodos();
 }

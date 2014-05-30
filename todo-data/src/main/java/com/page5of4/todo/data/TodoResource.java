@@ -52,4 +52,13 @@ public class TodoResource {
       }
       return todo;
    }
+
+   @Timed
+   @DELETE
+   @Path("/")
+   public Integer deleteAll() {
+      Integer numberOfTodos = repository.numberOfTodos();
+      repository.deleteAllTodos();
+      return numberOfTodos;
+   }
 }
